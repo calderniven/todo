@@ -22,14 +22,15 @@ class TodoListController extends Controller
     public function submitTodoListForm(Request $request)
     {
         $todoList = new TodoList();
-        $todoList->name = $request->input('name');
+        $todoList->name = $request->input('name', 'new list');
         $todoList->save();
         return redirect()->route('todo-lists.index');
     }
 
-    public function showTodoListDetail(string $id) {
+    public function showTodoListDetail(string $id)
+    {
         return view('lists.detail', [
-            'list' => TodoList::query()->findOrFail($id)
+            'list' => TodoList::query()->findOrFail($id),
         ]);
     }
 }
