@@ -24,7 +24,7 @@ class TodoListController extends Controller
         $todoList = new TodoList();
         $todoList->name = $request->input('name', 'new list');
         $todoList->save();
-        return redirect()->route('todo-lists.index');
+        return redirect()->to('/todo-lists');
     }
 
     public function showTodoListDetail(string $id)

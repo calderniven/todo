@@ -8,12 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'index']);
 
-Route::get('todo-lists', [TodoListController::class, 'showTodoLists'])->name('todo-lists.index');
-
+Route::get('/todo-lists', [TodoListController::class, 'showTodoLists']);
 Route::get('/todo-lists/create', [TodoListController::class, 'showTodoListForm']);
-
 Route::post('/todo-lists/create', [TodoListController::class, 'submitTodoListForm']);
+Route::get('/todo-lists/{id}', [TodoListController::class, 'showTodoListDetail']);
 
-Route::get('todo-lists/{id}', [TodoListController::class, 'showTodoListDetail'])->name('todo-lists.detail');
-
-Route::post('todos/create', [TodoController::class, 'createTodo']);
+Route::post('/todos/create', [TodoController::class, 'createTodo']);
