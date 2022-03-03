@@ -5,5 +5,5 @@
 
     This is a great todo app!
 
-    <a href="{{ route('todo-lists.index') }}">view todo lists</a>
+    <a href="/todo-lists">view todo lists</a>
 </x-layout>

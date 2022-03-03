@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TodoListController;
@@ -14,3 +15,8 @@ Route::post('/todo-lists/create', [TodoListController::class, 'submitTodoListFor
 Route::get('/todo-lists/{id}', [TodoListController::class, 'showTodoListDetail']);
 
 Route::post('/todos/create', [TodoController::class, 'createTodo']);
+Route::patch('/todos/complete/{id}', [TodoController::class, 'toggleTodo']);
+Route::delete('/todos/delete/{id}', [TodoController::class, 'deleteTodo']);
+
+Route::get('/contact', [ContactController::class, 'showContactForm']);
+Route::post('/contact', [ContactController::class, 'submitContactForm']);

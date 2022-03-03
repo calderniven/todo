@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('todos', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('notes')->nullable();
-            $table->foreignId('list_id')->constrained();
-            $table->timestamps();
-        });
+       Schema::table('todos', function (Blueprint $table) {
+            $table->timestamp('completed_at')->nullable();
+       });
     }
 
     /**
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todos');
+        Schema::table('todos', function (Blueprint $table) {
+            $table->dropColumn('completed_at');
+        });
     }
 };
