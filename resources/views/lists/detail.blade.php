@@ -15,20 +15,14 @@
     <ul>
         @foreach ($list->todos()->get() as $todo)
             <li>
-                @if ($todo->completed_at == null)
-                    {{ $todo->title }}
-                @else
-                    <strike>{{ $todo->title }}</strike>
-                @endif
+                {!! $todo->getDisplayTitle() !!}
                 
                 <form action="/todos/complete/{{ $todo->id }}" method="POST">
                     @method('PATCH')
                     @csrf
-                    @if ($todo->completed_at == null)
-                        <button type="submit">Mark as Completed</button>
-                    @else
-                        <button type="submit">Undo</button>
-                    @endif
+                        <button type="submit">
+                            {{ $todo->getToggleButtonText() }}
+                        </button>
                 </form>
             </li>
         @endforeach

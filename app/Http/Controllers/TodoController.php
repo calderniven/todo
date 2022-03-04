@@ -18,9 +18,7 @@ class TodoController extends Controller
     {
         $todo = Todo::query()->findOrFail($id);
 
-        $todo->completed_at = ($todo->completed_at == null)
-            ? now()
-            : null;
+        $todo->toggleCompletion();
 
         $todo->save();
 
